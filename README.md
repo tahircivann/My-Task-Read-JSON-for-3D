@@ -58,6 +58,8 @@ To run the tests, use:
    ```sh
   npm run test
    ```
+![Screenshot_3](https://github.com/tahircivann/My-Task-Read-JSON-for-3D/assets/69795597/b9f3ee03-ec9a-45c6-b580-55f10fba4a52)
+![Screenshot_4](https://github.com/tahircivann/My-Task-Read-JSON-for-3D/assets/69795597/3e780d66-f265-48ac-b3bc-4ff9bdd79769)
 
 Accessing the Application
 ```sh
