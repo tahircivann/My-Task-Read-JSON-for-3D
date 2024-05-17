@@ -8,11 +8,9 @@ A web application project that includes a project gallery and a 3D view using Th
 - [Project Description](#project-description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Available Scripts](#available-scripts)
 - [Folder Structure](#folder-structure)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Project Description
 
@@ -103,3 +101,14 @@ MY-TASK/
 ├── view.html
 └── webpack.config.ts
 ```
+
+### Technologies Used
+TypeScript: For type-safe JavaScript development.
+Webpack: For bundling JavaScript and other assets.
+Three.js: For rendering 3D graphics in the browser.
+Express: For serving static files and handling server-side logic.
+Jest: For running unit tests.
+Axios: For making HTTP requests.
+Cheerio: For web scraping.
+Concurrently: For running multiple npm scripts concurrently.
+HTTP-Server: For serving files over HTTP.
