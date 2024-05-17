@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://planner5d.com/gallery/floorplans/LbXaGZ/floorplans-house-furniture-decor-outdoor-lighting-3d",
+    "hash": "LbXaGZ",
+    "title": "Sample Project",
+    "totalRooms": 5,
+    "totalFloors": 2
+  },
+  {
+    "url": "https://planner5d.com/otherProjectURL",
+    "hash": "OtherHash",
+    "title": "Another Project",
+    "totalRooms": 3,
+    "totalFloors": 1
+  }
+
+]
