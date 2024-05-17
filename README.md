@@ -103,6 +103,7 @@ MY-TASK/
 ```
 
 ### Technologies Used
+```sh
 TypeScript: For type-safe JavaScript development.
 Webpack: For bundling JavaScript and other assets.
 Three.js: For rendering 3D graphics in the browser.
@@ -112,3 +113,4 @@ Axios: For making HTTP requests.
 Cheerio: For web scraping.
 Concurrently: For running multiple npm scripts concurrently.
 HTTP-Server: For serving files over HTTP.
+```
