@@ -1,66 +1,43 @@
-interface Project {
-    hash: string;
-    title: string;
-    url: string;
-    totalRooms: number;
-    totalFloors: number;
-    source: string; // Add a property to indicate the source JSON file
+import { scrapeProjects } from './scraper';
+import './styles.css';
 
-}
-const alreadyAdded = new Set();
-console.log("Hello from index.ts");
+const renderProjects = async () => {
+    const projects = await scrapeProjects();
+    console.log(projects);
+    const projectsContainer = document.getElementById('projects');
 
-document.addEventListener("DOMContentLoaded", () => {
-    const projectsContainer = document.getElementById("projects-container");
-    if (!projectsContainer) {
-        console.error("Container for projects not found");
-        return;
+    if (projectsContainer) {
+        projects.forEach(project => {
+            const projectElement = document.createElement('div');
+            projectElement.className = 'project';
+
+            const titleElement = document.createElement('h2');
+            titleElement.textContent = project.title;
+            projectElement.appendChild(titleElement);
+
+            const hashElement = document.createElement('p');
+            hashElement.textContent = `Hash: ${project.hash}`;
+            projectElement.appendChild(hashElement);
+
+            const roomsElement = document.createElement('p');
+            roomsElement.textContent = `Total Rooms: ${project.totalRooms}`;
+            projectElement.appendChild(roomsElement);
+
+            const floorsElement = document.createElement('p');
+            floorsElement.textContent = `Total Floors: ${project.totalFloors}`;
+            projectElement.appendChild(floorsElement);
+
+            // Add a button to open the project in the custom view page
+            const openButton = document.createElement('button');
+            openButton.textContent = 'Open Project';
+            openButton.onclick = () => {
+                window.open(`http://127.0.0.1:3001/view.html?hash=${project.hash}&title=${encodeURIComponent(project.title)}&rooms=${project.totalRooms}&floors=${project.totalFloors}`, '_blank');
+            }
+            projectElement.appendChild(openButton);
+
+            projectsContainer.appendChild(projectElement);
+        });
     }
+};
 
-
-    const appendProjectToDOM = (project: Project) => {
-        if (alreadyAdded.has(`${project.source}-${project.hash}`)) return; // Prevent duplicate entries
-        alreadyAdded.add(`${project.source}-${project.hash}`);
-
-        const projectElement = document.createElement("div");
-        projectElement.innerHTML = `<h2>${project.title}</h2><p>Total Rooms: ${project.totalRooms}</p><p>Total Floors: ${project.totalFloors}</p>`;
-        projectsContainer.appendChild(projectElement);
-    };
-
-    const fetchProjectDetails = async (project: Project): Promise<Project> => {
-        return new Promise(resolve => setTimeout(() => resolve(project), Math.random() * 1000));
-    };
-
-    let projectsLoaded = false;
-    console.log("Loading projects...");
-
-    const loadProjects = async (): Promise<void> => {
-        if (projectsLoaded) {
-            console.log("Projects are already loaded.");
-            return;
-        }
-        projectsLoaded = true;
-        console.log("Fetching projects...");
-
-        // Clear the alreadyAdded set before each fetch
-        alreadyAdded.clear();
-
-        const response = await fetch('projects.json');
-        if (!response.ok) {
-            throw new Error(`Failed to fetch projects: ${response.status}`);
-        }
-        const projects: Project[] = await response.json();
-
-        try {
-            const fetchedProjects = await Promise.all(projects.map(fetchProjectDetails));
-            fetchedProjects.forEach(appendProjectToDOM);
-        } catch (error) {
-            console.error("Error fetching project details:", error);
-        }
-    };
-    try {
-        loadProjects();
-    } catch (error) {
-        console.error("Error during DOM initialization:", error);
-    }
-});
+renderProjects();

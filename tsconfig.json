@@ -1,26 +1,26 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        "module": "esnext",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "allowJs": true,
-        "sourceMap": true,
-        "outDir": "./dist", // Directory to output the compiled files
-        "strict": true, // Enable all strict type-checking options
-        "moduleResolution": "node", // Module resolution strategy
-        "esModuleInterop": true, // Enables compatibility with non-ES module spec compliant imports
-        "skipLibCheck": true, // Skip type checking of all declaration files (*.d.ts)
-        "forceConsistentCasingInFileNames": true // Disallow inconsistently-cased references to the same file
+        "target": "ES6",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist",
+        "rootDir": "./",
+        "baseUrl": "./",
+        "paths": {
+            "*": [
+                "src/*",
+                "tests/*"
+            ]
+        }
     },
     "include": [
-        "src/**/*" // Files to include in compilation
+        "src/**/*.ts",
+        "tests/**/*.ts"
     ],
     "exclude": [
-        "node_modules", // Exclude the node_modules directory
-        "**/*.spec.ts" // Exclude test files
+        "node_modules"
     ]
 }
